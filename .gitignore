@@ -5,3 +5,4 @@ dialedin.db
 .DS_Store
 
 .vercel
+.env*
