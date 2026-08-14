@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
@@ -25,10 +25,11 @@ export default async function handler(req, res) {
   }
 
   try {
+    const redis = Redis.fromEnv();
     const order = { name, email, quantity, status: 'reserved', created_at: Date.now() };
-    await kv.rpush('preorders', JSON.stringify(order));
+    await redis.rpush('preorders', JSON.stringify(order));
     return res.json({ success: true, message: "Reserved! We'll email you when your order is ready.", quantity });
   } catch (err) {
-    return res.status(500).json({ detail: 'Storage not configured. Set up Vercel KV.', error: String(err?.message || err) });
+    return res.status(500).json({ detail: 'Storage not configured. Set up Upstash Redis.', error: String(err?.message || err) });
   }
 }

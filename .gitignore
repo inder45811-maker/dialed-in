@@ -3,3 +3,5 @@ __pycache__/
 dialedin.db
 .env
 .DS_Store
+
+.vercel

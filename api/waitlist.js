@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
@@ -20,14 +20,15 @@ export default async function handler(req, res) {
   }
 
   try {
-    const already = await kv.sismember('waitlist:emails', email);
+    const redis = Redis.fromEnv();
+    const already = await redis.sismember('waitlist:emails', email);
     if (already) {
       return res.json({ success: true, message: "You're already on the list!", duplicate: true });
     }
-    await kv.sadd('waitlist:emails', email);
-    await kv.rpush('waitlist:ordered', email);
+    await redis.sadd('waitlist:emails', email);
+    await redis.rpush('waitlist:ordered', email);
     return res.json({ success: true, message: "You're on the list. Watch your inbox." });
   } catch (err) {
-    return res.status(500).json({ detail: 'Storage not configured. Set up Vercel KV.', error: String(err?.message || err) });
+    return res.status(500).json({ detail: 'Storage not configured. Set up Upstash Redis.', error: String(err?.message || err) });
   }
 }
