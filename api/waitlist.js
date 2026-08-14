@@ -20,7 +20,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const redis = Redis.fromEnv();
+    const redis = new Redis({
+      url: process.env.KV_REST_API_URL,
+      token: process.env.KV_REST_API_TOKEN,
+    });
     const already = await redis.sismember('waitlist:emails', email);
     if (already) {
       return res.json({ success: true, message: "You're already on the list!", duplicate: true });

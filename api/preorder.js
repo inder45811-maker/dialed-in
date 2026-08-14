@@ -25,7 +25,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const redis = Redis.fromEnv();
+    const redis = new Redis({
+      url: process.env.KV_REST_API_URL,
+      token: process.env.KV_REST_API_TOKEN,
+    });
     const order = { name, email, quantity, status: 'reserved', created_at: Date.now() };
     await redis.rpush('preorders', JSON.stringify(order));
     return res.json({ success: true, message: "Reserved! We'll email you when your order is ready.", quantity });

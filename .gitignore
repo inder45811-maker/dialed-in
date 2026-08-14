@@ -6,3 +6,4 @@ dialedin.db
 
 .vercel
 .env*
+.claude/\nskills-lock.json
