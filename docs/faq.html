@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Dialed In</title>
+  <meta name="description" content="Frequently asked questions about Dialed In — Focus." />
+  <meta name="theme-color" content="#0c0f0d" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Space+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="./">
+        <svg class="mark" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="#0C0F0D" stroke-width="3"/><circle cx="32" cy="32" r="21" fill="none" stroke="#A3E635" stroke-width="5" stroke-linecap="round" stroke-dasharray="49.5 82.5" transform="rotate(-90 32 32)"/><circle cx="32" cy="11" r="3.5" fill="#A3E635"/><circle cx="32" cy="32" r="4" fill="#0C0F0D"/></svg>
+        DIALED<span>IN</span>
+      </a>
+      <div class="nav-links">
+        <a href="product.html">Shop</a>
+        <a href="science.html">Science</a>
+        <a href="about.html">About</a>
+        <a href="faq.html" class="active">FAQ</a>
+      </div>
+      <a class="nav-cta" href="product.html">Pre-order</a>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <h1>Questions, answered.</h1>
+    <p>Everything you'd ask before trying Dialed In.</p>
+  </section>
+
+  <section class="faq-section">
+    <div class="container faq-list">
+      <div class="faq-item open"><div class="faq-q">When does it ship?</div><div class="faq-a"><p>We're in pre-order right now. Reserve yours and we'll email you the moment it's ready to ship — first come, first served. No charge until it ships.</p></div></div>
+      <div class="faq-item"><div class="faq-q">How is this different from other focus supplements?</div><div class="faq-a"><p>Most focus products are caffeine and a prayer. Dialed In uses adaptogenic mushrooms, L-theanine, and alpha-GPC for calm, sustained focus — plus the D3, K2, zinc, and magnesium your brain actually runs on. One formula, no filler.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Does it contain caffeine?</div><div class="faq-a"><p>No. Dialed In is caffeine-free. The energy comes from cordyceps (ATP production), not stimulants — so there's no jitter and no crash.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Is it safe?</div><div class="faq-a"><p>All ingredients are research-backed at safe, sensible doses, and every batch is third-party tested for purity and potency. As with any supplement, check with your doctor if you're pregnant, nursing, or on medication.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Is it vegan / allergen-free?</div><div class="faq-a"><p>Yes — vegan capsules, no gluten, no soy, no artificial anything.</p></div></div>
+      <div class="faq-item"><div class="faq-q">How long until I feel it?</div><div class="faq-a"><p>Most people notice calmer, deeper focus within the first week. The mushrooms and minerals compound over time — full effect builds over 2–4 weeks of consistent daily use.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Can I take it with other supplements?</div><div class="faq-a"><p>Yes. It's designed as your daily baseline. If you take a separate creatine or protein, they work alongside it fine.</p></div></div>
+      <div class="faq-item"><div class="faq-q">What's your guarantee?</div><div class="faq-a"><p>If you don't feel the difference, we'll refund you. No hoops. That simple.</p></div></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">DIALED<span>IN</span></div>
+      <div class="footer-links">
+        <a href="product.html">Shop</a>
+        <a href="science.html">Science</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+      <div class="footer-copy">© 2026 Dialed In. Built by people who actually take this stuff.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+    });
+  </script>
+</body>
+</html>
