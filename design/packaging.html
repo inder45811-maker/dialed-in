@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dialed In — Packaging</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #F3F5F3;
+      font-family: 'Inter', sans-serif;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 64px 24px; color: #0C0F0D;
+    }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 28px; letter-spacing: -1px; margin-bottom: 8px; }
+    p.sub { color: #5F6B63; margin-bottom: 48px; font-size: 15px; }
+    .grid { display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; }
+
+    /* ── Product box ── */
+    .box {
+      width: 260px; height: 340px; border-radius: 18px; position: relative;
+      background: linear-gradient(165deg, #141a16 0%, #0C0F0D 55%, #1a241c 100%);
+      box-shadow: 0 30px 60px rgba(12,15,13,0.35);
+      display: flex; flex-direction: column; align-items: center; padding: 28px 20px;
+      color: #fff;
+    }
+    .box::before {
+      content: ''; position: absolute; inset: 10px; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; pointer-events: none;
+    }
+    .box .mark { width: 34px; height: 34px; margin-bottom: 14px; }
+    .box .brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 3px; text-align: center; }
+    .box .brand span { color: #A3E635; }
+    .box .product {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 34px;
+      letter-spacing: -1px; margin-top: 6px;
+    }
+    .box .band {
+      margin-top: 18px; width: 100%; text-align: center;
+      background: #A3E635; color: #0C0F0D; border-radius: 6px;
+      padding: 8px 0; font-family: 'Space Mono', monospace; font-size: 12px;
+      letter-spacing: 1px;
+    }
+    .box .meta {
+      margin-top: auto; font-family: 'Space Mono', monospace; font-size: 10px;
+      letter-spacing: 1px; color: rgba(255,255,255,0.5); text-align: center; line-height: 1.8;
+    }
+
+    /* ── Dark variant (SLEEP) ── */
+    .box.sleep .product { color: #A3E635; }
+    .box.sleep .band { background: #0C0F0D; color: #A3E635; border: 1px solid #A3E635; }
+
+    /* ── Swatch row ── */
+    .swatches { margin-top: 48px; display: flex; gap: 16px; align-items: center; }
+    .swatch { width: 40px; height: 40px; border-radius: 10px; border: 1px solid #E4E8E5; }
+    .swatch-label { font-family: 'Space Mono', monospace; font-size: 11px; color: #5F6B63; }
+    .swatch-group { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  </style>
+</head>
+<body>
+  <h1>DIALED IN — Packaging</h1>
+  <p class="sub">Matte dark · embossed wordmark · single signal band</p>
+
+  <div class="grid">
+    <!-- FOCUS -->
+    <div class="box">
+      <svg class="mark" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="#fff" stroke-width="2"/><circle cx="32" cy="32" r="21" fill="none" stroke="#A3E635" stroke-width="4" stroke-linecap="round" stroke-dasharray="49.5 82.5" transform="rotate(-90 32 32)"/><circle cx="32" cy="11" r="3" fill="#A3E635"/><circle cx="32" cy="32" r="4" fill="#fff"/></svg>
+      <div class="brand">DIALED<span>IN</span></div>
+      <div class="product">FOCUS</div>
+      <div class="band">DEEP FOCUS · ZERO JITTERS</div>
+      <div class="meta">60 CAPSULES · 30 SERVINGS<br/>THIRD-PARTY TESTED</div>
+    </div>
+
+    <!-- SLEEP (future) -->
+    <div class="box sleep">
+      <svg class="mark" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="#fff" stroke-width="2"/><circle cx="32" cy="32" r="21" fill="none" stroke="#A3E635" stroke-width="4" stroke-linecap="round" stroke-dasharray="49.5 82.5" transform="rotate(-90 32 32)"/><circle cx="32" cy="11" r="3" fill="#A3E635"/><circle cx="32" cy="32" r="4" fill="#fff"/></svg>
+      <div class="brand">DIALED<span>IN</span></div>
+      <div class="product">SLEEP</div>
+      <div class="band">WIND DOWN · DEEP REST</div>
+      <div class="meta">60 CAPSULES · 30 SERVINGS<br/>THIRD-PARTY TESTED</div>
+    </div>
+  </div>
+
+  <div class="swatches">
+    <div class="swatch-group"><div class="swatch" style="background:#0C0F0D"></div><span class="swatch-label">ink</span></div>
+    <div class="swatch-group"><div class="swatch" style="background:#FFFFFF"></div><span class="swatch-label">paper</span></div>
+    <div class="swatch-group"><div class="swatch" style="background:#F3F5F3"></div><span class="swatch-label">fog</span></div>
+    <div class="swatch-group"><div class="swatch" style="background:#E4E8E5"></div><span class="swatch-label">line</span></div>
+    <div class="swatch-group"><div class="swatch" style="background:#A3E635"></div><span class="swatch-label">signal</span></div>
+    <div class="swatch-group"><div class="swatch" style="background:#5F6B63"></div><span class="swatch-label">muted</span></div>
+  </div>
+</body>
+</html>
