@@ -1,6 +1,23 @@
 import { Redis } from '@upstash/redis';
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+const ML_BASE = 'https://connect.mailerlite.com/api';
+
+async function addToNewsletter(email) {
+  const key = process.env.MAILERLITE_API_KEY;
+  const group = process.env.MAILERLITE_GROUP_ID;
+  if (!key || !group) return false;
+  const resp = await fetch(`${ML_BASE}/subscribers`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${key}`,
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({ email, groups: [group] }),
+  });
+  return resp.ok;
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -30,6 +47,8 @@ export default async function handler(req, res) {
     }
     await redis.sadd('waitlist:emails', email);
     await redis.rpush('waitlist:ordered', email);
+    // Also subscribe to the newsletter (best-effort, non-blocking)
+    try { await addToNewsletter(email); } catch (e) { /* ignore */ }
     return res.json({ success: true, message: "You're on the list. Watch your inbox." });
   } catch (err) {
     return res.status(500).json({ detail: 'Storage not configured. Set up Upstash Redis.', error: String(err?.message || err) });
