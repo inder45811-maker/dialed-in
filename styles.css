@@ -286,3 +286,22 @@ section h2 {
   .directions-grid { grid-template-columns: 1fr; }
   .product-gallery { position: static; }
 }
+
+/* Lead magnet */
+.leadmagnet { padding: 72px 0; background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.lm-grid { display: grid; grid-template-columns: 1fr 240px; gap: 48px; align-items: center; }
+.lm-tag { display: inline-block; background: var(--signal); color: var(--ink); font-weight: 700; font-size: 11px; letter-spacing: 1.5px; padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+.lm-copy h2 { font-size: 34px; margin-bottom: 10px; }
+.lm-copy .section-sub { margin-bottom: 22px; }
+.lm-form { margin: 0 0 14px; flex-wrap: wrap; }
+.lm-form input { min-width: 200px; }
+.lm-pdf { display: flex; justify-content: center; }
+.pdf-card { width: 180px; padding: 28px 18px; border-radius: 10px; background: var(--ink); text-align: center; box-shadow: 0 24px 48px rgba(12,15,13,0.28); transform: rotate(3deg); }
+.pdf-mark { color: var(--signal); font-size: 26px; margin-bottom: 14px; }
+.pdf-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.15; color: #fff; letter-spacing: 1px; margin-bottom: 16px; }
+.pdf-band { display: inline-block; background: var(--signal); color: var(--ink); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 999px; }
+
+@media (max-width: 768px) {
+  .lm-grid { grid-template-columns: 1fr; gap: 32px; }
+  .lm-pdf { order: -1; }
+}

@@ -45,6 +45,30 @@
     </div>
   </section>
 
+  <!-- Lead magnet -->
+  <section class="leadmagnet" id="protocol">
+    <div class="container lm-grid">
+      <div class="lm-copy">
+        <div class="lm-tag">FREE DOWNLOAD</div>
+        <h2>The Deep Focus Protocol</h2>
+        <p class="section-sub">The exact stack, timing, and daily routine behind unshakeable attention — in one free PDF.</p>
+        <form class="waitlist-form lm-form" id="lm-form">
+          <input type="email" id="lm-email" placeholder="you@email.com" required />
+          <button type="submit" class="cta-primary">Get the free guide →</button>
+        </form>
+        <div class="form-status" id="lm-status"></div>
+        <div class="form-note">Free. No spam. Instant download.</div>
+      </div>
+      <div class="lm-pdf">
+        <div class="pdf-card">
+          <div class="pdf-mark">◎</div>
+          <div class="pdf-title">THE DEEP<br/>FOCUS<br/>PROTOCOL</div>
+          <div class="pdf-band">6-PAGE PDF</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Effects -->
   <section class="effects">
     <div class="container">
@@ -181,6 +205,36 @@
       }
       btn.disabled = false;
       btn.textContent = 'Get dialed in →';
+    });
+
+    // Lead magnet form
+    const lmForm = document.getElementById('lm-form');
+    const lmStatus = document.getElementById('lm-status');
+    lmForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('lm-email').value.trim();
+      if (!email) return;
+      lmStatus.textContent = 'Sending…';
+      lmStatus.style.color = '';
+      try {
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        if (res.ok) {
+          lmStatus.textContent = '✅ Download starting…';
+          lmStatus.style.color = '#2ecc71';
+          window.location.href = '/deep-focus-protocol.pdf';
+        } else {
+          const data = await res.json().catch(() => ({}));
+          lmStatus.textContent = data.detail || 'Something went wrong. Try again.';
+          lmStatus.style.color = '#e74c3c';
+        }
+      } catch (err) {
+        lmStatus.textContent = 'Network error. Try again.';
+        lmStatus.style.color = '#e74c3c';
+      }
     });
   </script>
 </body>
